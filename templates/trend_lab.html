@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Trend Lab | NEXUS FORGE{% endblock %}
+{% block page_name %}trend_lab{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">Trend Lab</p>
+        <h1>Upload past papers and let the system predict what matters most next.</h1>
+        <p class="hero-text">
+            Add multiple years of previous papers, and the app will detect repeated themes, estimate difficulty,
+            rank chapters, group questions topic-wise, and generate the most probable questions for the next exam cycle.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">What It Delivers</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Topic-Wise PYQs</h3>
+                    <p>Past questions are grouped into repeating topic clusters and chapter priorities.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>Trend + Difficulty</h3>
+                    <p>The system studies patterns, style shifts, and the dominant question difficulty.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Most Probable Questions</h3>
+                    <p>You get a predictive question list and a high-yield preparation path.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Paper Inputs</p>
+        <form id="trendLabForm" class="form-stack">
+            <label>
+                <span>Exam</span>
+                <select id="trendExam" name="exam">
+                    <option value="">Any Exam / University Paper</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Course / Subject Title</span>
+                <input id="trendCourseTitle" name="course_title" placeholder="Example: B.Tech Operating Systems, UPSC Polity, University Microeconomics">
+            </label>
+            <label>
+                <span>Analysis Goal</span>
+                <input id="trendGoal" name="goal" placeholder="Example: predict likely 2026 paper, identify must-do chapters">
+            </label>
+            <label>
+                <span>Upload Previous Papers</span>
+                <input id="trendFiles" name="papers" type="file" multiple accept=".txt,.md,.csv,.json,.log">
+            </label>
+            <label>
+                <span>Paste Extracted Paper Text</span>
+                <textarea id="trendPapersText" name="papers_text" rows="12" placeholder="Paste previous-year paper text here if your files are not text-based. Add 3 to 4 years for a stronger prediction signal."></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Run Trend Analysis</button>
+        </form>
+        <p class="mini-note">Best with multiple years. In this build, text-based uploads work directly; if your papers are PDFs, paste extracted text here.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Prediction Engine</p>
+        <div id="trendLabOutput" class="empty-state">
+            Upload past papers or paste extracted text. The system will generate chapter priority, topic-wise PYQs, and probable questions here.
+        </div>
+    </div>
+</section>
+{% endblock %}

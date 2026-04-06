@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}NEXUS FORGE | AI Study Command Center{% endblock %}
+{% block page_name %}home{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="hero-copy panel panel-hero">
+        <p class="eyebrow">AI Study Command Center</p>
+        <h1>Notes, summary, professor review, vault, mock test, and comeback strategy in one futuristic exam app.</h1>
+        <p class="hero-text">
+            NEXUS FORGE turns scattered study material into sharp notes, exam-ready summaries, faculty-style answer reviews,
+            and a personal study vault. This is not just an app, it is a high-pressure prep cockpit.
+        </p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="{{ url_for('pass_pathfinder') }}">Start Pass Pathfinder</a>
+            <a class="btn btn-primary" href="{{ url_for('notes') }}">Start AI Notes</a>
+            <a class="btn btn-secondary" href="{{ url_for('exam_atlas') }}">Open Exam Atlas</a>
+            <a class="btn btn-secondary" href="{{ url_for('ai_studio') }}">Launch AI Studio</a>
+            <a class="btn btn-secondary" href="{{ url_for('war_room') }}">Open War Room</a>
+        </div>
+        <div class="stat-ribbon">
+            <div>
+                <strong>{{ catalog|length }}</strong>
+                <span>Exam tracks</span>
+            </div>
+            <div>
+                <strong>{{ total_questions }}</strong>
+                <span>Mock questions</span>
+            </div>
+            <div>
+                <strong>All-in-one</strong>
+                <span>Study system</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-display">
+        <p class="eyebrow">Workflow</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Forge Notes</h3>
+                    <p>Turn any topic into an exam-oriented blueprint.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>Compress Chapters</h3>
+                    <p>Break long chapters into flashcards and keywords.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Test and Recover</h3>
+                    <p>Use Mock Arena and Professor Lab to find weak spots, then close them in War Room.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="feature-grid feature-grid-wide">
+    <article class="panel feature-card accent-orange">
+        <p class="eyebrow">Notes Engine</p>
+        <h2>Precision notes from any topic</h2>
+        <p>Smart, quick, and deep modes combine answer blueprints, traps, and revision sprints in one output.</p>
+    </article>
+    <article class="panel feature-card accent-red">
+        <p class="eyebrow">Pass Pathfinder</p>
+        <h2>For students who do not know where to start</h2>
+        <p>Enter your exam, university, semester, and subject. The app infers the syllabus, ranks units, predicts likely questions, and builds a pass-ready route.</p>
+    </article>
+    <article class="panel feature-card accent-teal">
+        <p class="eyebrow">Summary Lab</p>
+        <h2>Turn paragraphs into exam ammo</h2>
+        <p>Overview, key bullets, keywords, flashcards, lecture outlines, and probable exam questions are generated automatically.</p>
+    </article>
+    <article class="panel feature-card accent-orange">
+        <p class="eyebrow">Video Notes</p>
+        <h2>Convert lectures into notes</h2>
+        <p>Turn a YouTube lesson and transcript into revision notes, key takeaways, and recall-ready prompts.</p>
+    </article>
+    <article class="panel feature-card accent-teal">
+        <p class="eyebrow">PYQ Lab</p>
+        <h2>Turn previous questions into a map</h2>
+        <p>Group questions topic-wise, surface repeat zones, and get probable next-question angles from one subject dashboard.</p>
+    </article>
+    <article class="panel feature-card accent-red">
+        <p class="eyebrow">Mock Arena</p>
+        <h2>Scores with recovery planning</h2>
+        <p>It does more than show a result. It identifies weak topics and your next action so the next attempt is smarter.</p>
+    </article>
+    <article class="panel feature-card accent-orange">
+        <p class="eyebrow">War Room</p>
+        <h2>Custom comeback blueprint</h2>
+        <p>Build a daily attack plan based on your target exam, timeline, and study hours.</p>
+    </article>
+    <article class="panel feature-card accent-teal">
+        <p class="eyebrow">Professor Lab</p>
+        <h2>Test answers through a faculty lens</h2>
+        <p>Get a rubric, verdict, viva questions, and an improved answer draft in one place.</p>
+    </article>
+    <article class="panel feature-card accent-orange">
+        <p class="eyebrow">Exam Atlas</p>
+        <h2>All major exam tracks in one discovery layer</h2>
+        <p>Subjects, topic clusters, classic bank availability, and AI-ready launch points are visible at a glance.</p>
+    </article>
+    <article class="panel feature-card accent-red">
+        <p class="eyebrow">Trend Lab</p>
+        <h2>Predict the next paper</h2>
+        <p>Upload multiple years of previous papers to rank chapters, group recurring PYQs, and generate probable questions.</p>
+    </article>
+    <article class="panel feature-card accent-teal">
+        <p class="eyebrow">AI Studio</p>
+        <h2>Turn concepts into visual lesson decks</h2>
+        <p>Build deep understanding with a learning path, board flow, memory anchors, and an explainer visual.</p>
+    </article>
+    <article class="panel feature-card accent-red">
+        <p class="eyebrow">Study Vault</p>
+        <h2>Never lose what you build</h2>
+        <p>Save notes, summaries, plans, and answer reviews to build a personal academic archive.</p>
+    </article>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Exam Radar</p>
+        <h2>Available tracks</h2>
+        <div class="exam-stack">
+            {% for item in catalog %}
+            <div class="exam-card">
+                <div>
+                    <strong>{{ item.exam }}</strong>
+                    <span>{% if item.question_count %}{{ item.question_count }} questions{% else %}AI infinite{% endif %}</span>
+                </div>
+                <p>
+                    {% for subject in item.subjects %}
+                        {{ subject.name }}{% if not loop.last %} / {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="panel">
+        <p class="eyebrow">Top Momentum</p>
+        <h2>Leaderboard preview</h2>
+        <div class="leader-mini">
+            {% if leaderboard_preview %}
+                {% for user in leaderboard_preview %}
+                <div class="leader-row">
+                    <span>#{{ loop.index }}</span>
+                    <strong>{{ user.username }}</strong>
+                    <em>{{ user.best_score }}%</em>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="muted-copy">The leaderboard is empty right now. You can set the first serious score.</p>
+            {% endif %}
+        </div>
+        <a class="text-link" href="{{ url_for('leaderboard') }}">Open full leaderboard</a>
+    </div>
+</section>
+{% endblock %}

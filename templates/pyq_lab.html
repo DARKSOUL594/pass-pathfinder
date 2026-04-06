@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}PYQ Lab | NEXUS FORGE{% endblock %}
+{% block page_name %}pyq_lab{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">PYQ Lab</p>
+        <h1>Turn previous-year questions into a chapter-wise exam map.</h1>
+        <p class="hero-text">
+            Select an exam and subject, then let the system group previous questions topic-wise, reveal repeat zones,
+            and predict what you should prepare next.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">What You Unlock</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Topic Clusters</h3>
+                    <p>Questions are arranged chapter-wise so you can see where the paper keeps returning.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>Repeat Signals</h3>
+                    <p>The engine highlights hot chapters, difficulty pattern, and answer angles worth revising first.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Predicted Drills</h3>
+                    <p>You get probable next-question prompts plus sprint drills for focused practice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">PYQ Filters</p>
+        <form id="pyqLabForm" class="form-stack">
+            <label>
+                <span>Exam</span>
+                <select id="pyqExam">
+                    <option value="">Choose exam</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Subject</span>
+                <select id="pyqSubject">
+                    <option value="">Choose subject</option>
+                </select>
+            </label>
+            <label>
+                <span>Chapter / Topic Focus</span>
+                <select id="pyqChapter">
+                    <option value="">Full subject scan</option>
+                </select>
+            </label>
+            <label>
+                <span>Question Depth</span>
+                <select id="pyqCount">
+                    <option value="8">Compact</option>
+                    <option value="12" selected>Balanced</option>
+                    <option value="18">Deep Scan</option>
+                </select>
+            </label>
+            <label>
+                <span>Difficulty Bias</span>
+                <select id="pyqDifficulty">
+                    <option value="mixed">Mixed</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </label>
+            <button class="btn btn-primary" type="submit">Build PYQ Map</button>
+        </form>
+        <p class="mini-note">Use a chapter filter when you want a tighter revision path. Leave it open for a full subject scan.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Previous-Year Intelligence</p>
+        <div id="pyqLabOutput" class="empty-state">
+            Select an exam and subject. The topic-wise PYQ map, repeat zones, and predicted questions will appear here.
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+window.EXAM_CATALOG = {{ catalog|tojson }};
+</script>
+{% endblock %}

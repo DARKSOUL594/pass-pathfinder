@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Mock Arena | NEXUS FORGE{% endblock %}
+{% block page_name %}mock{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">Mock + Practice Engine</p>
+        <h1>Static question banks and AI-infinite practice for Indian competitive exams.</h1>
+        <p class="hero-text">
+            Choose an exam, choose a subject, set a custom topic, and generate as many practice sets or mock sessions as you want.
+            For wrong answers, you can also get AI analysis, explanations, and visual explainers.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">Exam Universe</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Classic Bank</h3>
+                    <p>Start fast with existing stored questions.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>AI Infinity</h3>
+                    <p>Generate fresh sets based on your custom topic and difficulty.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Repair Loop</h3>
+                    <p>Review wrong answers and open visual explainers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Session Builder</p>
+
+        <div class="form-stack">
+            <label>
+                <span>Engine</span>
+                <select id="mockEngine">
+                    <option value="ai">AI Infinity</option>
+                    <option value="classic">Classic Bank</option>
+                </select>
+            </label>
+            <label>
+                <span>Session Type</span>
+                <select id="mockMode">
+                    <option value="practice">Practice</option>
+                    <option value="mock">Mock</option>
+                </select>
+            </label>
+            <label>
+                <span>Exam</span>
+                <select id="mockExam">
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Subject</span>
+                <select id="mockSubject"></select>
+            </label>
+            <label>
+                <span>Topic Focus</span>
+                <input id="mockTopic" placeholder="Example: Fundamental Rights, DI, Organic Chemistry">
+            </label>
+            <label>
+                <span>Difficulty</span>
+                <select id="mockDifficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </label>
+            <label>
+                <span>Question Count</span>
+                <input id="mockCount" type="number" min="3" max="30" value="10">
+            </label>
+            <button class="btn btn-primary" id="startMockBtn" type="button">Launch Session</button>
+        </div>
+
+        <p id="mockEngineStatus" class="mini-note">Checking AI engine status...</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Live Test Zone</p>
+        <div id="mockOutput" class="empty-state">
+            Set the exam, subject, mode, and topic, then click Launch Session. AI mode will generate fresh question sets.
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+window.EXAM_CATALOG = {{ catalog|tojson }};
+</script>
+{% endblock %}

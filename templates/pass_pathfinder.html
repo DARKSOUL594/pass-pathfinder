@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Pass Pathfinder | NEXUS FORGE{% endblock %}
+{% block page_name %}pass_pathfinder{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">Pass Pathfinder</p>
+        <h1>For the student who does not know what to study, how to study, or where to begin.</h1>
+        <p class="hero-text">
+            Tell the system your exam timeline, university, semester, and subject. If you do not know the syllabus,
+            leave it blank and the planner will infer a study map, likely questions, and a pass-focused route for you.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">What It Solves</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Zero-To-Start Guidance</h3>
+                    <p>Ideal for students who feel blank and need the first right move immediately.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>AI Syllabus Inference</h3>
+                    <p>If the syllabus is unknown, the planner derives likely units and exam patterns from the subject context.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Visual + Question Route</h3>
+                    <p>You get question predictions, chapter priorities, and 3D-style concept scene prompts for learning faster.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Student Setup</p>
+        <form id="pathfinderForm" class="form-stack">
+            <label>
+                <span>Exam</span>
+                <select id="pathExam">
+                    <option value="">University / General Exam</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>University / College</span>
+                <input id="pathUniversity" placeholder="Example: Delhi University, AKTU, IGNOU, Pune University">
+            </label>
+            <label>
+                <span>Semester / Year</span>
+                <input id="pathSemester" placeholder="Example: Semester 3, 2nd Year, Final Semester">
+            </label>
+            <label>
+                <span>Subject</span>
+                <input id="pathSubject" placeholder="Example: Operating Systems, Microeconomics, Physics" required>
+            </label>
+            <label>
+                <span>Days Left For Exam</span>
+                <input id="pathDays" type="number" min="1" max="120" value="21">
+            </label>
+            <label>
+                <span>Hours Available Per Day</span>
+                <input id="pathHours" type="number" min="1" max="12" value="3">
+            </label>
+            <label>
+                <span>Starting Point</span>
+                <select id="pathStart">
+                    <option value="blank">I know nothing</option>
+                    <option value="basic">I know a little</option>
+                    <option value="revision">I only need revision</option>
+                </select>
+            </label>
+            <label>
+                <span>Target Mode</span>
+                <select id="pathTarget">
+                    <option value="pass">Pass safely</option>
+                    <option value="score">Score higher</option>
+                    <option value="rescue">Crash recovery</option>
+                </select>
+            </label>
+            <label>
+                <span>Syllabus (Optional)</span>
+                <textarea id="pathSyllabus" rows="10" placeholder="Paste chapter names or syllabus points here. Leave blank if you do not know it and want the system to infer the study map."></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Build My Route</button>
+        </form>
+        <p class="mini-note">This mode is built for uncertainty. Even if you only know the subject name, the planner will still produce a starting roadmap.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Zero-To-Pass Plan</p>
+        <div id="pathfinderOutput" class="empty-state">
+            Fill the basic details and start. Your syllabus map, likely questions, study windows, and visual learning route will appear here.
+        </div>
+    </div>
+</section>
+{% endblock %}

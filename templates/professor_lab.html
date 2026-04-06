@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Professor Lab | NEXUS FORGE{% endblock %}
+{% block page_name %}professor_lab{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">Professor Lab</p>
+        <h1>Test your answer against a faculty-style rubric.</h1>
+        <p class="hero-text">
+            Enter the question, paste your answer, and the system will return a score, strengths, fixes,
+            an improved answer frame, and viva questions.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">Why It Hits Hard</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Rubric Score</h3>
+                    <p>Structure, relevance, depth, and exam fit are scored separately.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>Professor Note</h3>
+                    <p>See clearly how your answer reads from an evaluator's perspective.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Viva Pressure</h3>
+                    <p>Get follow-up questions that build oral confidence under pressure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Input</p>
+        <form id="professorForm" class="form-stack">
+            <label>
+                <span>Exam</span>
+                <select id="profExam">
+                    <option value="">Any Competitive Exam</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Professor Tone</span>
+                <select id="profTone">
+                    <option value="balanced">Balanced</option>
+                    <option value="supportive">Supportive</option>
+                    <option value="strict">Strict</option>
+                </select>
+            </label>
+            <label>
+                <span>Question</span>
+                <textarea id="profQuestion" rows="5" placeholder="Example: Explain the significance of Fundamental Rights in the Indian Constitution." required></textarea>
+            </label>
+            <label>
+                <span>Your Answer</span>
+                <textarea id="profAnswer" rows="12" placeholder="Write your answer here..." required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Evaluate Answer</button>
+        </form>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Faculty Review</p>
+        <div id="professorOutput" class="empty-state">
+            Enter a question and an answer. I will show what will impress an evaluator and what still needs work.
+        </div>
+    </div>
+</section>
+{% endblock %}

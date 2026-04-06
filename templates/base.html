@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NEXUS FORGE{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-page="{% block page_name %}app{% endblock %}">
+    <div class="scroll-progress">
+        <span id="scrollProgress"></span>
+    </div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="scene-noise"></div>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <div class="holo-ring holo-one"></div>
+    <div class="holo-ring holo-two"></div>
+    <div class="float-shape shape-one"></div>
+    <div class="float-shape shape-two"></div>
+    <div class="float-shape shape-three"></div>
+
+    <header class="site-header">
+        <a class="brand-mark" href="{{ url_for('home') }}">
+            <span class="brand-chip">NEXUS</span>
+            <span class="brand-word">FORGE</span>
+        </a>
+
+        <nav class="site-nav">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('pass_pathfinder') }}">Pass Pathfinder</a>
+            <a href="{{ url_for('exam_atlas') }}">Exam Atlas</a>
+            <a href="{{ url_for('notes') }}">AI Notes</a>
+            <a href="{{ url_for('pyq_lab') }}">PYQ Lab</a>
+            <a href="{{ url_for('video_notes') }}">Video Notes</a>
+            <a href="{{ url_for('summarizer') }}">Summarizer</a>
+            <a href="{{ url_for('ai_studio') }}">AI Studio</a>
+            <a href="{{ url_for('war_room') }}">War Room</a>
+            <a href="{{ url_for('trend_lab') }}">Trend Lab</a>
+            <a href="{{ url_for('professor_lab') }}">Professor Lab</a>
+            <a href="{{ url_for('mock') }}">Mock Arena</a>
+            <a href="{{ url_for('vault') }}">Vault</a>
+            <a href="{{ url_for('leaderboard') }}">Leaderboard</a>
+            <a class="nav-accent" href="{{ url_for('login_page') }}">Login</a>
+        </nav>
+    </header>
+
+    <main class="page-shell">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

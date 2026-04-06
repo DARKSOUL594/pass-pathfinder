@@ -1,0 +1,146 @@
+{
+  "UPSC": {
+    "Polity": [
+      {
+        "question": "Who is known as the guardian of the Indian Constitution?",
+        "options": ["President", "Supreme Court", "Prime Minister", "Parliament"],
+        "answer": "Supreme Court",
+        "topic": "Constitutional Bodies",
+        "explanation": "The Supreme Court protects the Constitution through judicial review."
+      },
+      {
+        "question": "Which part of the Constitution deals with Fundamental Rights?",
+        "options": ["Part II", "Part III", "Part IV", "Part V"],
+        "answer": "Part III",
+        "topic": "Fundamental Rights",
+        "explanation": "Part III is a high-frequency factual area in polity exams."
+      },
+      {
+        "question": "Directive Principles of State Policy are:",
+        "options": ["Legally enforceable", "Judicially punishable", "Non-justiciable", "Temporary provisions"],
+        "answer": "Non-justiciable",
+        "topic": "DPSP",
+        "explanation": "Directive Principles guide governance but are not directly enforceable in court."
+      }
+    ],
+    "History": [
+      {
+        "question": "Who founded the Mughal Empire in India?",
+        "options": ["Akbar", "Babur", "Humayun", "Aurangzeb"],
+        "answer": "Babur",
+        "topic": "Medieval India",
+        "explanation": "Babur established the Mughal Empire after the First Battle of Panipat."
+      },
+      {
+        "question": "The Revolt of 1857 began in:",
+        "options": ["Meerut", "Kanpur", "Lucknow", "Delhi"],
+        "answer": "Meerut",
+        "topic": "Modern History",
+        "explanation": "Meerut is a standard prelims fact linked to the 1857 uprising."
+      },
+      {
+        "question": "Who gave the call 'Do or Die' during the Quit India Movement?",
+        "options": ["Subhas Chandra Bose", "Jawaharlal Nehru", "Mahatma Gandhi", "Sardar Patel"],
+        "answer": "Mahatma Gandhi",
+        "topic": "National Movement",
+        "explanation": "Gandhi launched the Quit India Movement in 1942 with this call."
+      }
+    ]
+  },
+  "SSC": {
+    "Math": [
+      {
+        "question": "What is the value of 2 + 2?",
+        "options": ["2", "3", "4", "5"],
+        "answer": "4",
+        "topic": "Arithmetic Basics",
+        "explanation": "Simple arithmetic often checks accuracy under time pressure."
+      },
+      {
+        "question": "If x^2 - 5x + 6 = 0, what are the roots?",
+        "options": ["2 and 3", "1 and 6", "3 and 4", "2 and 6"],
+        "answer": "2 and 3",
+        "topic": "Quadratic Equations",
+        "explanation": "Factorization gives (x - 2)(x - 3) = 0."
+      },
+      {
+        "question": "25 percent of 200 is:",
+        "options": ["25", "40", "50", "75"],
+        "answer": "50",
+        "topic": "Percentages",
+        "explanation": "25 percent means one-fourth, and one-fourth of 200 is 50."
+      }
+    ],
+    "Reasoning": [
+      {
+        "question": "Find the odd one out.",
+        "options": ["Dog", "Cat", "Lion", "Car"],
+        "answer": "Car",
+        "topic": "Classification",
+        "explanation": "Three are animals, one is a vehicle."
+      },
+      {
+        "question": "If A = 1, B = 2, C = 3, then CAB = ?",
+        "options": ["312", "213", "321", "123"],
+        "answer": "312",
+        "topic": "Coding-Decoding",
+        "explanation": "Map each alphabet to its positional value."
+      },
+      {
+        "question": "Which number comes next: 2, 4, 8, 16, ?",
+        "options": ["18", "24", "32", "34"],
+        "answer": "32",
+        "topic": "Series",
+        "explanation": "Each term doubles."
+      }
+    ]
+  },
+  "NEET": {
+    "Biology": [
+      {
+        "question": "Photosynthesis mainly takes place in which cell organelle?",
+        "options": ["Mitochondria", "Nucleus", "Chloroplast", "Ribosome"],
+        "answer": "Chloroplast",
+        "topic": "Photosynthesis",
+        "explanation": "Chloroplast contains chlorophyll and is the site of photosynthesis."
+      },
+      {
+        "question": "Which process produces gametes?",
+        "options": ["Mitosis", "Meiosis", "Binary fission", "Budding"],
+        "answer": "Meiosis",
+        "topic": "Cell Division",
+        "explanation": "Meiosis reduces chromosome number and forms gametes."
+      },
+      {
+        "question": "DNA stands for:",
+        "options": ["Deoxyribo Nucleic Acid", "Double Nucleic Acid", "Deoxy Nitric Acid", "Dynamic Nucleic Array"],
+        "answer": "Deoxyribo Nucleic Acid",
+        "topic": "Genetics",
+        "explanation": "DNA is the hereditary molecule in most organisms."
+      }
+    ],
+    "Chemistry": [
+      {
+        "question": "The pH of a neutral solution is:",
+        "options": ["0", "7", "10", "14"],
+        "answer": "7",
+        "topic": "Acids and Bases",
+        "explanation": "Neutral water has pH 7 at standard conditions."
+      },
+      {
+        "question": "Which particle has a negative charge?",
+        "options": ["Proton", "Neutron", "Electron", "Nucleus"],
+        "answer": "Electron",
+        "topic": "Atomic Structure",
+        "explanation": "Electrons carry negative charge and orbit the nucleus."
+      },
+      {
+        "question": "Avogadro number is approximately:",
+        "options": ["6.022 x 10^23", "3.14", "9.8", "1.6 x 10^-19"],
+        "answer": "6.022 x 10^23",
+        "topic": "Mole Concept",
+        "explanation": "This constant represents the number of particles in one mole."
+      }
+    ]
+  }
+}

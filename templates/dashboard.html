@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | NEXUS FORGE{% endblock %}
+{% block page_name %}dashboard{% endblock %}
+
+{% block content %}
+<section class="panel hero-strip">
+    <div>
+        <p class="eyebrow">Mission Control</p>
+        <h1 id="dashboardGreeting">Build momentum, then protect it.</h1>
+    </div>
+    <p id="dashboardMission" class="hero-text">Loading your current exam mission...</p>
+</section>
+
+<section class="stats-grid" id="dashboardStats">
+    <div class="panel stat-card">
+        <span class="stat-label">Users</span>
+        <strong id="statUsers">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Subjects</span>
+        <strong id="statSubjects">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Questions</span>
+        <strong id="statQuestions">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Exam Tracks</span>
+        <strong id="statExams">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Vault Items</span>
+        <strong id="statVault">0</strong>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Personal Pulse</p>
+        <div id="personalPulse" class="empty-state">
+            Log in and complete a mock attempt to unlock personalized recovery insights here.
+        </div>
+    </div>
+    <div class="panel">
+        <p class="eyebrow">Exam Radar</p>
+        <div id="examRadar" class="exam-stack"></div>
+    </div>
+</section>
+
+<section class="panel">
+    <p class="eyebrow">Top Performers</p>
+    <div id="dashboardLeaders" class="leader-mini"></div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Daily Quest</p>
+        <div id="dashboardQuest" class="empty-state">Loading your next momentum quest...</div>
+    </div>
+    <div class="panel">
+        <p class="eyebrow">Recent Activity</p>
+        <div id="dashboardRecent" class="activity-grid"></div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Quick Launch</p>
+        <div class="button-row">
+            <a class="btn btn-primary" href="{{ url_for('pass_pathfinder') }}">Open Pass Pathfinder</a>
+            <a class="btn btn-primary" href="{{ url_for('exam_atlas') }}">Explore Atlas</a>
+            <a class="btn btn-primary" href="{{ url_for('notes') }}">Forge Notes</a>
+            <a class="btn btn-secondary" href="{{ url_for('pyq_lab') }}">Open PYQ Lab</a>
+            <a class="btn btn-secondary" href="{{ url_for('video_notes') }}">Video Notes</a>
+            <a class="btn btn-secondary" href="{{ url_for('summarizer') }}">Compress Chapter</a>
+            <a class="btn btn-secondary" href="{{ url_for('ai_studio') }}">Open AI Studio</a>
+            <a class="btn btn-secondary" href="{{ url_for('war_room') }}">Build War Room</a>
+            <a class="btn btn-secondary" href="{{ url_for('trend_lab') }}">Open Trend Lab</a>
+            <a class="btn btn-secondary" href="{{ url_for('professor_lab') }}">Check Answer</a>
+        </div>
+    </div>
+    <div class="panel">
+        <p class="eyebrow">System Rule</p>
+        <h2>Read less. Recall more. Review faster.</h2>
+        <p class="hero-text">Top students do not just study more. They detect weak areas early and close them fast.</p>
+    </div>
+</section>
+{% endblock %}

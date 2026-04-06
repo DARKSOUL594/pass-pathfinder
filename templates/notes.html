@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}AI Notes | NEXUS FORGE{% endblock %}
+{% block page_name %}notes{% endblock %}
+
+{% block content %}
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">AI Notes Forge</p>
+        <h1>Turn any raw topic into an exam-ready note system.</h1>
+        <form id="notesForm" class="form-stack">
+            <label>
+                <span>Topic</span>
+                <input id="topic" name="topic" placeholder="Example: Photosynthesis or Indian Constitution" required>
+            </label>
+            <label>
+                <span>Exam</span>
+                <select id="notesExam" name="exam">
+                    <option value="">Any Competitive Exam</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Goal</span>
+                <input id="notesGoal" name="goal" placeholder="Example: 3-mark answer mastery">
+            </label>
+            <label>
+                <span>Depth</span>
+                <select id="notesDepth" name="depth">
+                    <option value="smart">Smart Notes</option>
+                    <option value="quick">Quick Revision</option>
+                    <option value="deep">Deep Dive</option>
+                </select>
+            </label>
+            <button class="btn btn-primary" type="submit">Generate Notes</button>
+        </form>
+        <p class="mini-note">Generated note packs can be saved to the Vault in one click.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Output</p>
+        <div id="notesOutput" class="empty-state">
+            Enter a topic, exam, and goal. I will generate structured notes, traps, and rapid-fire questions.
+        </div>
+    </div>
+</section>
+{% endblock %}

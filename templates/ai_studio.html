@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}AI Studio | NEXUS FORGE{% endblock %}
+{% block page_name %}ai_studio{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">AI Studio</p>
+        <h1>Turn any topic into a 3D-style visual lesson, memory system, and teaching deck.</h1>
+        <p class="hero-text">
+            This page is built for concepts that should be seen, explained, and recalled quickly, not just read once.
+            Enter a topic, choose a style, and the system will build an immersive lesson pack for you.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">Studio Flow</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Immersion Deck</h3>
+                    <p>Learning path, board flow, and memory anchors are generated automatically.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>Visual Explainer</h3>
+                    <p>View the concept as a diagram-like visual or a generated image.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Campus Ready</h3>
+                    <p>Save the output to the Vault and take it into mock practice or professor review.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Studio Input</p>
+        <form id="studioForm" class="form-stack">
+            <label>
+                <span>Topic</span>
+                <input id="studioTopic" placeholder="Example: Fundamental Rights, Photosynthesis, 3D Geometry" required>
+            </label>
+            <label>
+                <span>Exam</span>
+                <select id="studioExam">
+                    <option value="">Any Competitive Exam</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Learning Style</span>
+                <select id="studioStyle">
+                    <option value="visual map">Visual Map</option>
+                    <option value="story mode">Story Mode</option>
+                    <option value="faculty board">Faculty Board</option>
+                    <option value="formula ladder">Formula Ladder</option>
+                </select>
+            </label>
+            <label>
+                <span>Outcome Goal</span>
+                <input id="studioGoal" placeholder="Example: one-shot revision, viva confidence, quick recall">
+            </label>
+            <button class="btn btn-primary" type="submit">Generate Studio Deck</button>
+        </form>
+        <p class="mini-note">If an AI key is available, the app will use richer model output; otherwise the local visual deck fallback still works smoothly.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Studio Output</p>
+        <div id="studioOutput" class="empty-state">
+            Choose a topic and style. Your immersive learning deck, visual explainer, and rapid recall pack will appear here.
+        </div>
+    </div>
+</section>
+{% endblock %}

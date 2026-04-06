@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Study Vault | NEXUS FORGE{% endblock %}
+{% block page_name %}vault{% endblock %}
+
+{% block content %}
+<section class="panel hero-strip">
+    <div>
+        <p class="eyebrow">Study Vault</p>
+        <h1>Your saved notes, plans, summaries, and professor reviews.</h1>
+    </div>
+    <p class="hero-text">
+        Save every high-value output and build a reusable academic archive.
+    </p>
+</section>
+
+<section class="stats-grid">
+    <div class="panel stat-card">
+        <span class="stat-label">Total Saved</span>
+        <strong id="vaultTotal">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Notes</span>
+        <strong id="vaultNotes">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Summaries</span>
+        <strong id="vaultSummaries">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Plans</span>
+        <strong id="vaultPlans">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Video Notes</span>
+        <strong id="vaultVideo">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Predictors</span>
+        <strong id="vaultPredictors">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Professor</span>
+        <strong id="vaultProfessor">0</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">AI Studio</span>
+        <strong id="vaultStudio">0</strong>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Spotlight</p>
+        <div id="vaultSpotlight" class="empty-state">Your latest saved artifact will appear here.</div>
+    </div>
+    <div class="panel">
+        <p class="eyebrow">Archive</p>
+        <div id="vaultGrid" class="vault-grid"></div>
+    </div>
+</section>
+{% endblock %}

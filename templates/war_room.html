@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}War Room | NEXUS FORGE{% endblock %}
+{% block page_name %}war_room{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">War Room</p>
+        <h1>Create a study attack plan that feels engineered, not guessed.</h1>
+        <p class="hero-text">
+            Enter the exam, available hours, energy level, and target topics. The system will build a daily strike plan, risk alerts,
+            and execution rituals for you.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">What Makes It Different</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Adaptive Plan</h3>
+                    <p>Study days are automatically structured around your time and topic priorities.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>Memory Pressure</h3>
+                    <p>Recall and output tasks stay mandatory alongside reading.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Recovery Logic</h3>
+                    <p>Weak areas are built into the plan instead of being left as separate reminders.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Planner Setup</p>
+        <form id="warRoomForm" class="form-stack">
+            <label>
+                <span>Exam</span>
+                <select id="warExam">
+                    <option value="">Target Exam</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Study Days</span>
+                <input id="warDays" type="number" min="1" max="30" value="7">
+            </label>
+            <label>
+                <span>Hours Per Day</span>
+                <input id="warHours" type="number" min="1" max="12" value="3">
+            </label>
+            <label>
+                <span>Energy Mode</span>
+                <select id="warEnergy">
+                    <option value="balanced">Balanced Strike</option>
+                    <option value="calm">Calm Precision</option>
+                    <option value="beast">Beast Mode</option>
+                </select>
+            </label>
+            <label>
+                <span>Topics</span>
+                <textarea id="warTopics" rows="6" placeholder="Example: Fundamental Rights, Photosynthesis, Quadratic Equations"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Generate War Room</button>
+        </form>
+        <p class="mini-note">War Room plans can be saved and revisited later from the dashboard and Vault.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Attack Blueprint</p>
+        <div id="warRoomOutput" class="empty-state">
+            Set your exam mission. I will build a multi-day execution plan for you.
+        </div>
+    </div>
+</section>
+{% endblock %}

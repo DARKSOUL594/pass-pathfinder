@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Leaderboard | NEXUS FORGE{% endblock %}
+{% block page_name %}leaderboard{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <p class="eyebrow">Leaderboard</p>
+    <h1>A scoreboard for consistency, clarity, and comeback performance.</h1>
+
+    <div class="table-wrap">
+        <table class="leader-table">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>User</th>
+                    <th>Best Score</th>
+                    <th>Latest Score</th>
+                    <th>Attempts</th>
+                    <th>Last Exam</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if users %}
+                    {% for user in users %}
+                    <tr>
+                        <td>#{{ loop.index }}</td>
+                        <td>{{ user["username"] }}</td>
+                        <td>{{ user["best_score"] }}%</td>
+                        <td>{{ user["score"] }}%</td>
+                        <td>{{ user["attempts"] }}</td>
+                        <td>{{ user["last_exam"] or "Not attempted" }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6">Leaderboard is waiting for the first serious contender.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

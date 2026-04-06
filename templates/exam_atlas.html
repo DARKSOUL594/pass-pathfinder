@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Exam Atlas | NEXUS FORGE{% endblock %}
+{% block page_name %}exam_atlas{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">Exam Atlas</p>
+        <h1>Explore the competitive exam universe through one cinematic command layer.</h1>
+        <p class="hero-text">
+            From UPSC to NEET, Banking to CLAT, Railway to REET. Each track includes subjects, topic clusters,
+            AI-ready practice flow, and direct launch actions in one place.
+        </p>
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="{{ url_for('mock') }}">Launch Mock Arena</a>
+            <a class="btn btn-secondary" href="{{ url_for('notes') }}">Forge Notes</a>
+            <a class="btn btn-secondary" href="{{ url_for('ai_studio') }}">Open AI Studio</a>
+        </div>
+    </div>
+
+    <div class="panel panel-display">
+        <p class="eyebrow">Featured Tracks</p>
+        <div class="timeline-card">
+            {% for item in atlas.featured[:3] %}
+            <div class="timeline-step">
+                <span>{{ "%02d"|format(loop.index) }}</span>
+                <div>
+                    <h3>{{ item.exam }}</h3>
+                    <p>{{ item.signature }} | {{ item.subject_count }} subjects | {{ item.topic_count }} mapped topics</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="stats-grid">
+    <div class="panel stat-card">
+        <span class="stat-label">Exam Tracks</span>
+        <strong>{{ atlas.stats.total_exams }}</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Subjects</span>
+        <strong>{{ atlas.stats.total_subjects }}</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Topic Clusters</span>
+        <strong>{{ atlas.stats.total_topics }}</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">Classic Questions</span>
+        <strong>{{ atlas.stats.classic_questions }}</strong>
+    </div>
+    <div class="panel stat-card">
+        <span class="stat-label">AI Coverage</span>
+        <strong>24/7</strong>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Atlas Controls</p>
+        <div class="form-stack">
+            <label>
+                <span>Search Track / Subject / Topic</span>
+                <input id="atlasSearch" placeholder="Example: Constitution, Banking, Photosynthesis, CLAT">
+            </label>
+            <label>
+                <span>Mode Filter</span>
+                <select id="atlasFilter">
+                    <option value="all">All Tracks</option>
+                    <option value="classic">Classic Bank Available</option>
+                    <option value="ai_only">AI Expansion Tracks</option>
+                </select>
+            </label>
+        </div>
+        <p class="mini-note">
+            Search instantly narrows the atlas to matching exams, subjects, or topics. Every card can launch notes, mocks, and War Room planning.
+        </p>
+    </div>
+
+    <div class="panel">
+        <p class="eyebrow">Campus Advantage</p>
+        <div class="signal-grid">
+            <article class="signal-card">
+                <strong>Infinite Practice</strong>
+                <p>Even if a topic has no stored question bank, AI can still generate fresh practice sets.</p>
+            </article>
+            <article class="signal-card">
+                <strong>Professor Layer</strong>
+                <p>Jump into Professor Lab directly from the atlas and polish answers through an evaluator's lens.</p>
+            </article>
+            <article class="signal-card">
+                <strong>Recovery Flow</strong>
+                <p>Once you choose an exam, War Room and Mock Arena become part of the same prep chain.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="panel">
+    <p class="eyebrow">Atlas Grid</p>
+    <div id="atlasGrid" class="atlas-grid"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+window.EXAM_ATLAS = {{ atlas|tojson }};
+</script>
+{% endblock %}

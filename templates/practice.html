@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body style="background:black;color:white;text-align:center">
+
+<h2>AI Quiz</h2>
+
+<button onclick="startQuiz()">Start</button>
+
+<h3 id="q"></h3>
+<div id="opt"></div>
+<p id="res"></p>
+
+<script>
+
+let correct = "";
+
+async function startQuiz(){
+    document.getElementById("res").innerText="";
+
+    let res = await fetch("/generate_quiz",{method:"POST"});
+    let data = await res.json();
+
+    document.getElementById("q").innerText = data.question;
+    correct = data.answer;
+
+    let html="";
+    data.options.forEach(o=>{
+        html+=`<button onclick="check('${o}')">${o}</button><br>`;
+    });
+
+    document.getElementById("opt").innerHTML = html;
+}
+
+async function check(ans){
+
+    let res = await fetch("/check_answer",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({selected:ans, correct:correct})
+    });
+
+    let data = await res.json();
+
+    document.getElementById("res").innerText=data.msg;
+
+    setTimeout(startQuiz,1500);  // 🔥 next question auto
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Video Notes | NEXUS FORGE{% endblock %}
+{% block page_name %}video_notes{% endblock %}
+
+{% block content %}
+<section class="hero-grid">
+    <div class="panel panel-hero">
+        <p class="eyebrow">Video Notes</p>
+        <h1>Turn a YouTube lecture into crisp revision notes and important takeaways.</h1>
+        <p class="hero-text">
+            Paste a YouTube link, add the transcript if you have it, and convert the lecture into structured notes,
+            recall cues, exam questions, and action steps.
+        </p>
+    </div>
+    <div class="panel panel-display">
+        <p class="eyebrow">Best Results</p>
+        <div class="timeline-card">
+            <div class="timeline-step">
+                <span>01</span>
+                <div>
+                    <h3>Add The Link</h3>
+                    <p>Use the video URL so the app can identify the lesson context.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>02</span>
+                <div>
+                    <h3>Paste Transcript</h3>
+                    <p>Transcript mode produces the most accurate notes and strongest key points.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <span>03</span>
+                <div>
+                    <h3>Revise Faster</h3>
+                    <p>Save the output to the Vault, then move into mock practice or answer writing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Video Input</p>
+        <form id="videoNotesForm" class="form-stack">
+            <label>
+                <span>YouTube URL</span>
+                <input id="videoUrl" placeholder="https://www.youtube.com/watch?v=...">
+            </label>
+            <label>
+                <span>Exam</span>
+                <select id="videoExam">
+                    <option value="">Any Competitive Exam</option>
+                    {% for item in catalog %}
+                    <option value="{{ item.exam }}">{{ item.exam }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>
+                <span>Focus Goal</span>
+                <input id="videoFocus" placeholder="Example: revision notes, likely viva points, chapter summary">
+            </label>
+            <label>
+                <span>Output Style</span>
+                <select id="videoStyle">
+                    <option value="smart">Smart Notes</option>
+                    <option value="quick">Quick Revision</option>
+                    <option value="deep">Deep Notes</option>
+                </select>
+            </label>
+            <label>
+                <span>Transcript Or Extracted Video Notes</span>
+                <textarea id="videoTranscript" rows="14" placeholder="Paste transcript text here for the best output. Link-only mode also works, but transcript mode is much more accurate."></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Generate Video Notes</button>
+        </form>
+        <p class="mini-note">Transcript is optional, but it makes the notes much more precise and useful.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Video Intelligence</p>
+        <div id="videoNotesOutput" class="empty-state">
+            Add a video link and optional transcript. Your summary, key notes, and recall plan will appear here.
+        </div>
+    </div>
+</section>
+{% endblock %}

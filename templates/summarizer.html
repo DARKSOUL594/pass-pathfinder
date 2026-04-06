@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Summarizer | NEXUS FORGE{% endblock %}
+{% block page_name %}summarizer{% endblock %}
+
+{% block content %}
+<section class="split-grid">
+    <div class="panel">
+        <p class="eyebrow">Summary Lab</p>
+        <h1>Compress a long chapter into a one-glance revision pack.</h1>
+        <form id="summaryForm" class="form-stack">
+            <label>
+                <span>Paste Text</span>
+                <textarea id="summaryInput" rows="16" placeholder="Paste your class notes, chapter paragraph, or lecture transcript here..." required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Summarize Now</button>
+        </form>
+        <p class="mini-note">The summary also generates memory battlecards, and both can be saved to the Vault.</p>
+    </div>
+
+    <div class="panel output-panel">
+        <p class="eyebrow">Exam Brief</p>
+        <div id="summaryOutput" class="empty-state">
+            Paste your text and this panel will render the overview, key bullets, keywords, flashcards, and exam-style prompts.
+        </div>
+    </div>
+</section>
+{% endblock %}

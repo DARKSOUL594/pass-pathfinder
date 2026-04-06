@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Login | NEXUS FORGE{% endblock %}
+{% block page_name %}login{% endblock %}
+
+{% block content %}
+<section class="auth-shell">
+    <div class="panel auth-card">
+        <p class="eyebrow">Access Your Command Center</p>
+        <h1>Log in or register to track your progress.</h1>
+        <div class="form-stack">
+            <label>
+                <span>Username</span>
+                <input id="authUsername" placeholder="Choose your study identity">
+            </label>
+            <label>
+                <span>Password</span>
+                <input id="authPassword" type="password" placeholder="Minimum 4 characters">
+            </label>
+            <div class="button-row">
+                <button class="btn btn-primary" id="loginBtn" type="button">Login</button>
+                <button class="btn btn-secondary" id="registerBtn" type="button">Register</button>
+            </div>
+            <p id="authMessage" class="status-line"></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
